@@ -36,12 +36,19 @@ class ManageUser {
     function erase(User $user) {
         return $this->delete($user->getEmail());
     }
-
+    
    function set(User $user, $pkemail){
         //Update de todos los campos menos el id, el id se usara como el where para el update numero de filas modificadas
         $parametros =$user->getArray();
         $parametrosWhere = array();
         $parametrosWhere["email"]=$pkemail;
+        return $this->bd->update($this->tabla, $parametros, $parametrosWhere);
+    }
+     function set2(User $user,$activo){
+        //Update de todos los campos menos el id, el id se usara como el where para el update numero de filas modificadas
+        $parametros =$user->getArray();
+        $parametrosWhere = array();
+        $parametrosWhere["activo"]=$activo;
         return $this->bd->update($this->tabla, $parametros, $parametrosWhere);
     }
 

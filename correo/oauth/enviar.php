@@ -8,7 +8,7 @@ $alias = "Mariangeles";
 $destino = "mariangeles11_1994@hotmail.com";
 //$destino = Request::get("usuario");
 $asunto = "Prueba de correo";
-$mensaje = "http://localhost:8008/Gestion/correo/oauth/enviar.php?$semilla";
+$mensaje = "http://localhost:8008/Gestion/correo/oauth/phpactivar.php?activo=$semilla";
 
 require_once '../../clases/Google/autoload.php';
 require_once '../class.phpmailer.php';  //las últimas versiones también vienen con autoload
