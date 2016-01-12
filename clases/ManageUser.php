@@ -44,12 +44,18 @@ class ManageUser {
         $parametrosWhere["email"]=$pkemail;
         return $this->bd->update($this->tabla, $parametros, $parametrosWhere);
     }
-     function set2(User $user,$activo){
+     function set2(User $user){
         //Update de todos los campos menos el id, el id se usara como el where para el update numero de filas modificadas
-        $parametros =$user->getArray();
+        $parametrosSet = array();
+        $parametrosSet['email'] = $user->getEmail();
+        $parametrosSet['clave'] = $user->getClave();
+        $parametrosSet['alias'] = $user->getAlias();
+        $parametrosSet['fechaAlta'] = $user->getFechaAlta();
+        $parametrosSet['activo'] = $user->getActivo();
+        
         $parametrosWhere = array();
-        $parametrosWhere["activo"]=$activo;
-        return $this->bd->update($this->tabla, $parametros, $parametrosWhere);
+        $parametrosWhere["email"]=$user->getEmail();
+        return $this->bd->update($this->tabla, $parametrosSet, $parametrosWhere);
     }
 
     function insert(User $user) {
